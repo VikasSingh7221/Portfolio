@@ -1,244 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vikas Singh | Portfolio</title>
-  <link rel="stylesheet" href="style/style.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="icon" type="image/x-icon" href="my_image.png">
+  <title>vikas singh - Google Search</title>
+  <meta name="description"
+    content="Vikas Singh — Data Engineer. Enterprise-scale, multi-tenant healthcare data platform: ingestion, Redshift-to-Snowflake migration, transformation, distribution, and platform tooling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1A73E8;
+      --blue-dark: #174EA6;
+      --red: #EA4335;
+      --yellow: #F9AB00;
+      --green: #34A853;
+      --text: #202124;
+      --text-2: #4D5156;
+      --text-3: #70757A;
+      --link: #1A0DAB;
+      --url: #006621;
+      --border: #DFE1E5;
+      --bg: #FFFFFF;
+      --bg-soft: #F8F9FA;
+      --bg-soft2: #F1F3F4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    ::selection {
+      background: #C9E0FF;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 22px;
+      padding: 14px 28px;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+
+    .topbar a {
+      padding: 6px 4px;
+    }
+
+    .topbar a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar .resume-pill {
+      background: var(--blue);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .topbar .resume-pill:hover {
+      background: var(--blue-dark);
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px 70px;
+      text-align: center;
+    }
+
+    .glogo {
+      font-size: clamp(48px, 10vw, 90px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+
+    .glogo span:nth-child(4n+1) {
+      color: var(--blue);
+    }
+
+    .glogo span:nth-child(4n+2) {
+      color: var(--red);
+    }
+
+    .glogo span:nth-child(4n+3) {
+      color: var(--yellow);
+    }
+
+    .glogo span:nth-child(4n+4) {
+      color: var(--green);
+    }
+
+    .gtag {
+      color: var(--text-3);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      margin-bottom: 34px;
+    }
+
+    .searchbar {
+      width: min(560px, 90vw);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.12);
+      position: relative;
+      transition: .15s;
+    }
+
+    .searchbar:hover,
+    .searchbar.focus {
+      box-shadow: 0 1px 8px rgba(32, 33, 36, 0.24);
+    }
+
+    .searchbar svg {
+      flex: 0 0 auto;
+    }
+
+    .searchbar input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 15px;
+      font-family: 'Roboto', sans-serif;
+      color: var(--text);
+      background: transparent;
+    }
+
+    .suggest {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(32, 33, 36, 0.2);
+      overflow: hidden;
+      display: none;
+      z-index: 20;
+      text-align: left;
+    }
+
+    .suggest.show {
+      display: block;
+    }
+
+    .suggest button {
+      width: 100%;
+      text-align: left;
+      padding: 11px 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .suggest button:hover {
+      background: var(--bg-soft);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gbtn {
+      background: var(--bg-soft);
+      border: 1px solid var(--bg-soft);
+      color: var(--text-2);
+      font-size: 13.5px;
+      padding: 9px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .gbtn:hover {
+      border-color: var(--border);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .offered {
+      margin-top: 44px;
+      font-size: 12.5px;
+      color: var(--text-3);
+    }
+
+    .offered a {
+      color: var(--link);
+      padding: 0 6px;
+    }
+
+    .offered a:hover {
+      text-decoration: underline;
+    }
+
+    /* TABS BAR */
+    .tabsbar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 30;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 6px;
+      padding: 0 28px;
+      overflow-x: auto;
+    }
+
+    .tab {
+      padding: 16px 14px 13px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .tab.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+      font-weight: 500;
+    }
+
+    .tab:hover {
+      color: var(--blue);
+    }
+
+    /* RESULTS LAYOUT */
+    .results-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      padding: 22px 28px 60px;
+      align-items: flex-start;
+    }
+
+    .results-col {
+      flex: 1 1 600px;
+      min-width: 0;
+      max-width: 640px;
+    }
+
+    .meta {
+      color: var(--text-3);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    /* FEATURED SNIPPET */
+    .snippet {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 30px;
+    }
+
+    .snippet .slabel {
+      font-size: 11.5px;
+      color: var(--text-3);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .sgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 28px;
+    }
+
+    .sgrid .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--bg-soft2);
+      font-size: 13px;
+    }
+
+    .sgrid .row b {
+      font-weight: 500;
+    }
+
+    .ssource {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--text-2);
+    }
+
+    .favicon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: conic-gradient(var(--blue) 0 25%, var(--red) 25% 50%, var(--yellow) 50% 75%, var(--green) 75% 100%);
+    }
+
+    /* RESULT ITEM */
+    .result {
+      margin-bottom: 28px;
+    }
+
+    .result .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      margin-bottom: 3px;
+    }
+
+    .result .breadcrumb .fav {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: conic-gradient(var(--blue) 0 25%, var(--red) 25% 50%, var(--yellow) 50% 75%, var(--green) 75% 100%);
+      flex: 0 0 auto;
+    }
+
+    .result h3 {
+      font-size: 19px;
+      color: var(--link);
+      font-weight: 400;
+      margin-bottom: 4px;
+      cursor: pointer;
+    }
+
+    .result h3:hover {
+      text-decoration: underline;
+    }
+
+    .result p {
+      color: var(--text-2);
+      font-size: 13.5px;
+      line-height: 1.58;
+      margin: 0;
+    }
+
+    .result p b {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .result .entry-tag {
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 4px;
+    }
+
+    /* PAA */
+    .paa {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 34px 0;
+    }
+
+    .paa-h {
+      font-size: 15px;
+      padding: 16px 0 12px;
+      font-weight: 500;
+    }
+
+    .paa-item {
+      border-top: 1px solid var(--bg-soft2);
+    }
+
+    .paa-item summary {
+      list-style: none;
+      padding: 14px 4px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .paa-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .paa-item summary::after {
+      content: '⌄';
+      color: var(--text-3);
+      font-size: 16px;
+      transition: transform .2s;
+    }
+
+    .paa-item[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .paa-body {
+      padding: 0 4px 16px;
+      color: var(--text-2);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .paa-body b {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* SKILL CHIPS */
+    .chiprow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      color: var(--text-2);
+    }
+
+    .chip.on {
+      border-color: #CFE3FD;
+      background: #E8F0FE;
+      color: var(--blue-dark);
+    }
+
+    /* PAGINATION */
+    .pagination {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 38px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .pnum {
+      color: var(--text-2);
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .pnum.active {
+      color: var(--blue);
+      font-weight: 500;
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 2px;
+    }
+
+    .pnext {
+      color: var(--blue);
+      font-size: 13.5px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .pnext:hover {
+      text-decoration: underline;
+    }
+
+    /* KNOWLEDGE PANEL */
+    .kg-panel {
+      flex: 0 0 320px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      position: sticky;
+      top: 64px;
+    }
+
+    @media (max-width:920px) {
+      .kg-panel {
+        display: none;
+      }
+    }
+
+    .kg-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      background: conic-gradient(var(--blue) 0 25%, var(--red) 25% 50%, var(--yellow) 50% 75%, var(--green) 75% 100%);
+    }
+
+    .kg-name {
+      font-size: 19px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .kg-role {
+      font-size: 13px;
+      color: var(--text-2);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .kg-bio {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .kg-facts {
+      margin-top: 18px;
+      border-top: 1px solid var(--bg-soft2);
+    }
+
+    .kg-fact {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--bg-soft2);
+      font-size: 12.5px;
+    }
+
+    .kg-fact .fk {
+      color: var(--text-3);
+    }
+
+    .kg-fact .fv {
+      color: var(--text);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .kg-links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .kg-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-2);
+    }
+
+    .kg-link:hover {
+      background: var(--bg-soft);
+      border-color: var(--text-3);
+    }
+
+    .kg-more {
+      font-size: 11.5px;
+      color: var(--text-3);
+      text-align: center;
+      margin-top: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .kg-related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .kg-related span {
+      font-size: 11.5px;
+      background: var(--bg-soft);
+      border-radius: 12px;
+      padding: 5px 10px;
+      color: var(--text-2);
+    }
+
+    /* EDIT NOTICE */
+    .editnote {
+      margin-top: 20px;
+      border: 1px dashed var(--yellow);
+      background: #FEF7E0;
+      color: #7A5B00;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .gfooter {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+
+    .gfooter .loc {
+      padding: 14px 28px;
+      color: var(--text-2);
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gfooter .links {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px 28px;
+      color: var(--text-2);
+      font-size: 13.5px;
+    }
+
+    .gfooter .links .grp {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .gfooter a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="wrapper">
 
-    <!-- ===== PROFILE PAGE ===== -->
-    <div class="book-page">
-      <div class="profile-page">
-        <img src="my_image.png" alt="Vikas Singh">
-        <h1>Vikas Singh</h1>
-        <h3>Snowflake Data Engineer | Cloud & Automation Engineer</h3>
-
-        <div class="social-media">
-          <a href="https://www.linkedin.com/in/vikas-singh-76b30722b" target="_blank">
-            <i class='bx bxl-linkedin'></i>
-          </a>
-        </div>
-
-        <p>
-          👋 Hi, I'm <b>Vikas Singh</b> — a SnowPro Core Certified Data Engineer specializing in
-          <b>Snowflake architecture, cloud data migration, Python automation, SQL optimization,
-          CI/CD pipelines</b> and <b>AWS cloud services</b>.
-          I build scalable ETL pipelines, modernize legacy systems, and design automation frameworks
-          that save teams 30+ hours weekly.
-        </p>
-
-        <div class="btn-box">
-          <a href="Vikas_Resume.pdf" class="btn" download>Download Resume</a>
-          <a href="#contact" class="btn contact-me">Contact Me</a>
-        </div>
-        <span class="number-page">1</span>
-      </div>
-    </div>
-
-    <!-- ===== EXPERIENCE PAGE ===== -->
-    <div class="book-page">
-      <h1 class="title">Experience</h1>
-      <div class="edu-box">
-
-        <div class="edu-content">
-          <span class="year"><i class='bx bxs-calendar'></i> Dec 2024 – Present</span>
-          <h3>Associate Consultant – Hakkōda (IBM Company)</h3>
-          <p>
-            • Cloud Data Migration: Migrated SQL scripts, stored procedures, UDFs, tables & views from MySQL/Redshift to Snowflake with 100% accuracy.<br>
-            • Backend Engineering: Modernized Java Spring Boot applications to work smoothly on Snowflake-driven architectures.<br>
-            • Automation Engineering: Built Python automation frameworks saving 30+ hours weekly and improving team productivity by 40%.<br>
-            • CI/CD Development: Managed AWS CodePipeline deployments across dev, QA, and prod with zero downtime.<br>
-            • Quality Assurance: Created JUnit/Mockito/API test suites achieving 85%+ coverage and reducing defects by 60%.<br>
-            • Cloud Monitoring: Designed AWS CloudWatch monitoring pipelines ensuring stable deployments.<br>
-            • Led a team of 8–9 interns during large-scale SQL migration workflows.
-          </p>
-        </div>
-
-        <div class="edu-content">
-          <span class="year"><i class='bx bxs-calendar'></i> Dec 2024 – Feb 2025</span>
-          <h3>Data Consultant Intern – Bot Consulting</h3>
-          <p>
-            • Supported MySQL/Redshift → Snowflake cloud migration ensuring high data fidelity.<br>
-            • Automated cleaning, validation, and testing processes using Python (70–80% manual effort reduction).<br>
-            • Built ETL helpers and transformation scripts for scalable ingestion pipelines.
-          </p>
-        </div>
-
-      </div>
-      <span class="number-page">2</span>
-    </div>
-
-    <!-- ===== EDUCATION PAGE ===== -->
-    <div class="book-page">
-      <h1 class="title">Education</h1>
-      <div class="edu-box">
-
-        <div class="edu-content">
-          <span class="year"><i class='bx bxs-calendar'></i> 2021 – 2025</span>
-          <h3>B.Tech in Artificial Intelligence</h3>
-          <p>Swami Keshvanand Institute of Technology, Jaipur</p>
-          <p>CGPA: <b>9.74</b> (Top 5%)</p>
-        </div>
-
-        <div class="edu-content">
-          <span class="year"><i class='bx bxs-calendar'></i> 2020 – 2021</span>
-          <h3>Class 12th – CBSE</h3>
-          <p>Army Public School</p>
-          <p>Percentage: <b>96.8%</b></p>
-        </div>
-
-        <div class="edu-content">
-          <span class="year"><i class='bx bxs-calendar'></i> 2018 – 2019</span>
-          <h3>Class 10th – CBSE</h3>
-          <p>Army Public School</p>
-          <p>Percentage: <b>93.4%</b></p>
-        </div>
-
-      </div>
-      <span class="number-page">3</span>
-    </div>
-
-    <!-- ===== PROJECTS PAGE ===== -->
-    <div class="book-page">
-      <h1 class="title">Projects</h1>
-      <div class="edu-box">
-        
-        <div class="edu-content">
-          <h3>Heart Attack Prediction using ML</h3>
-          <p>
-            • Comparative analysis of ML models with/without physical exertion.<br>
-            • Published & presented at IEEE Conference (Scopus Indexed).<br>
-            • Tech: Python, Pandas, Scikit-learn.
-          </p>
-        </div>
-
-        <div class="edu-content">
-          <h3>CI/CD Workflow Automation</h3>
-          <p>
-            • Automated AWS CodePipeline workflows using Python.<br>
-            • Achieved zero-downtime deployments across all environments.<br>
-            • Improved reliability and reduced manual interventions.
-          </p>
-        </div>
-
-        <div class="edu-content">
-          <h3>SQL-to-Snowflake Migration Framework</h3>
-          <p>
-            • Automated validation and transformation for thousands of SQL objects.<br>
-            • Reduced manual QA time significantly via Python automation.<br>
-            • Enhanced migration accuracy and consistency.
-          </p>
-        </div>
-
-      </div>
-      <span class="number-page">4</span>
-    </div>
-
-    <!-- ===== SERVICES PAGE ===== -->
-    <div class="book-page">
-      <h1 class="title">My Services</h1>
-
-      <div class="services-box">
-        <div class="services-content">
-          <i class='bx bx-analyse'></i>
-          <h3>Data Science & AI Solutions</h3>
-          <p>Predictive analytics, ML models, feature engineering, and business intelligence.</p>
-        </div>
-
-        <div class="services-content">
-          <i class='bx bxs-cloud'></i>
-          <h3>Cloud Data Engineering</h3>
-          <p>Snowflake architecture, schema design, cloud data migration, and ETL pipelines.</p>
-        </div>
-
-        <div class="services-content">
-          <i class='bx bx-cog'></i>
-          <h3>Automation & CI/CD</h3>
-          <p>Python workflow automation, AWS CodePipeline, and DevOps integrations.</p>
-        </div>
-
-        <div class="services-content">
-          <i class='bx bx-code-alt'></i>
-          <h3>Backend Optimization</h3>
-          <p>Java Spring Boot modernization and Snowflake backend integration.</p>
-        </div>
-      </div>
-
-      <span class="number-page">5</span>
-    </div>
-
-    <!-- ===== SKILLS PAGE ===== -->
-    <div class="book-page">
-      <h1 class="title">Skills</h1>
-
-      <div class="skill-box">
-
-        <div class="skill-content">
-          <h3>Programming</h3>
-          <div class="content">Python, SQL, Java (Spring Boot), C++</div>
-        </div>
-
-        <div class="skill-content">
-          <h3>Databases</h3>
-          <div class="content">Snowflake (SnowPro Certified), MySQL, Amazon Redshift</div>
-        </div>
-
-        <div class="skill-content">
-          <h3>Cloud Engineering</h3>
-          <div class="content">AWS: S3, DynamoDB, CloudWatch, Secrets Manager, CodeBuild, CodePipeline</div>
-        </div>
-
-        <div class="skill-content">
-          <h3>Data Engineering</h3>
-          <div class="content">ETL pipelines, schema design, SQL optimization, data migration</div>
-        </div>
-
-        <div class="skill-content">
-          <h3>Machine Learning</h3>
-          <div class="content">Predictive analytics, modeling, feature engineering</div>
-        </div>
-
-        <div class="skill-content">
-          <h3>Testing & QA</h3>
-          <div class="content">JUnit, Mockito, API Testing (85%+ coverage)</div>
-        </div>
-
-        <div class="skill-content">
-          <h3>Tools</h3>
-          <div class="content">GitHub, Bitbucket, Jira, Confluence, Excel, Sigma, DBT (Basic)</div>
-        </div>
-
-      </div>
-      <span class="number-page">6</span>
-    </div>
-
-    <!-- ===== CONTACT PAGE ===== -->
-    <div class="book-page" id="contact">
-      <h1 class="title">Contact Me!</h1>
-
-      <div class="contact-box">
-        <form action="mailto:vikas15122003@gmail.com" method="POST" enctype="text/plain">
-          <input type="text" class="field" placeholder="Full Name" required>
-          <input type="email" class="field" placeholder="Email" required>
-          <textarea cols="30" rows="10" class="field" placeholder="Message"></textarea>
-          <input type="submit" class="btn" value="Send">
-        </form>
-
-        <p>📞 +91 7221970648 | ✉️ vikas15122003@gmail.com</p>
-      </div>
-
-      <a href="#" class="back-profile">
-        <i class='bx bxs-user'></i>
-      </a>
-      <span class="number-page">7</span>
-    </div>
-
+  <div class="topbar">
+    <a href="#architecture">Architecture</a>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a class="resume-pill" href="#">Resume</a>
   </div>
+
+  <section class="hero">
+    <h1 class="glogo" aria-label="Vikas Singh">
+      <span>V</span><span>i</span><span>k</span><span>a</span><span>s</span><span>
+      </span><span>S</span><span>i</span><span>n</span><span>g</span><span>h</span>
+    </h1>
+    <div class="gtag">Data Engineer — Data Platform Engineering</div>
+
+    <div class="searchbar" id="searchbar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="11" cy="11" r="7" stroke="#4D5156" stroke-width="2" />
+        <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#4D5156" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <input id="searchInput" type="text" placeholder="search vikas singh" autocomplete="off">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3z" stroke="#4285F4" stroke-width="2" />
+        <path d="M7 11a5 5 0 0010 0M12 19v3" stroke="#4285F4" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <div class="suggest" id="suggest">
+        <button data-jump="#architecture">🔍 vikas singh — architecture &amp; pipeline</button>
+        <button data-jump="#toolkit">🔍 vikas singh — platform engineering tools</button>
+        <button data-jump="#experience">🔍 vikas singh — experience at Hakkoda</button>
+        <button data-jump="#skills">🔍 vikas singh — snowflake sql python spark</button>
+        <button data-jump="#contact">🔍 vikas singh — contact / resume</button>
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <button class="gbtn" id="searchPlatform">Search Platform</button>
+      <button class="gbtn" id="feelingLucky">I'm Feeling Lucky</button>
+    </div>
+
+    <div class="offered">Vikas Singh available in:
+      <a href="#skills">SQL</a><a href="#skills">Snowflake</a><a href="#skills">Python</a><a href="#skills">Spark</a><a
+        href="#skills">Databricks</a>
+    </div>
+  </section>
+
+  <div class="tabsbar">
+    <div class="tabs">
+      <button class="tab active" data-target="#top">All</button>
+      <button class="tab" data-target="#architecture">Architecture</button>
+      <button class="tab" data-target="#toolkit">Toolkit</button>
+      <button class="tab" data-target="#experience">Experience</button>
+      <button class="tab" data-target="#skills">Skills</button>
+      <button class="tab" data-target="#education">Education</button>
+      <button class="tab" data-target="#contact">Contact</button>
+    </div>
+  </div>
+
+  <main class="results-wrap" id="top">
+    <div class="results-col">
+      <div class="meta">About 1 result (0.31 seconds)</div>
+
+      <div class="snippet">
+        <div class="slabel">Featured snippet from vikassingh.dev</div>
+        <div class="sgrid">
+          <div class="row"><span>Tenants</span><b>120+</b></div>
+          <div class="row"><span>Source systems</span><b>72</b></div>
+          <div class="row"><span>Rows processed</span><b>5B+</b></div>
+          <div class="row"><span>SQL queries migrated</span><b>25,000+</b></div>
+          <div class="row"><span>SQL objects</span><b>8,000+</b></div>
+          <div class="row"><span>Gold-layer tables</span><b>200+</b></div>
+          <div class="row"><span>Runtime reduction</span><b>72%</b></div>
+          <div class="row"><span>Environments</span><b>5</b></div>
+        </div>
+        <div class="ssource"><span class="favicon"></span> vikassingh.dev › field-summary</div>
+      </div>
+
+      <section id="architecture">
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › architecture › ingestion</div>
+          <h3>Ingestion — 72 sources into tenant-specific raw tables</h3>
+          <p>72 heterogeneous <b>source systems</b> land data in <b>Amazon S3</b>, per tenant. An event/queue-driven
+            importer loads arriving files into tenant-specific raw <b>Snowflake</b> tables. Owned the reliability of
+            this raw layer end to end.</p>
+          <div class="entry-tag">Entry 001 · Platform Architecture</div>
+        </div>
+
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › architecture › migration</div>
+          <h3>Migration — Redshift to Snowflake, live in production</h3>
+          <p>The existing <b>Redshift</b> platform stayed operational throughout — a parallel build, not a cutover.
+            Migrated <b>25,000+ SQL queries</b> and <b>8,000+ database objects</b>, across workloads reaching <b>5B+
+              rows</b>.</p>
+          <div class="entry-tag">Entry 002 · Platform Architecture</div>
+        </div>
+
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › architecture › transform</div>
+          <h3>Transformation &amp; Aggregation — Raw to Silver to 200+ Gold</h3>
+          <p>An aggregation process runs <b>10,000+ transformation queries</b> against the raw layer, producing the
+            silver layer and, ultimately, <b>200+ gold-layer</b> tables. Optimized one workload from ~9 hours to ~2.5
+            hours — a <b>72% runtime reduction</b>.</p>
+          <div class="entry-tag">Entry 003 · Platform Architecture</div>
+        </div>
+
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › architecture › serving</div>
+          <h3>Distribution, Serving &amp; the Spring Boot layer</h3>
+          <p>Gold tables feed distribution into a serving schema for the application layer. Migrated the app's
+            persistence from <b>Spring Boot + MySQL</b> to <b>Spring Boot + Snowflake</b>; wrote the Snowflake code and
+            integration tests.</p>
+          <div class="entry-tag">Entry 004 · Platform Architecture</div>
+        </div>
+      </section>
+
+      <section id="toolkit" class="paa">
+        <div class="paa-h">People also ask</div>
+        <details class="paa-item" open>
+          <summary>What is the Tenant Builder?</summary>
+          <div class="paa-body">A queue-triggered provisioning system: a single message kicks off tenant setup,
+            permissions, and deployment of <b>~8,000 SQL objects</b>. Full tenant online in <b>~3 hours</b>, across 5
+            environments and 3 Snowflake accounts.</div>
+        </details>
+        <details class="paa-item">
+          <summary>What does the Patch Installer do?</summary>
+          <div class="paa-body">Propagates a single schema or database change across every environment and tenant
+            database at once, instead of applying it by hand 120 times — cutting manual-deployment error across the
+            fleet.</div>
+        </details>
+        <details class="paa-item">
+          <summary>How is schema drift caught across 120+ tenants?</summary>
+          <div class="paa-body">A schema and tenant comparison utility diffs expected vs. actual structure across tenant
+            databases, catching drift before it surfaces as a production data issue.</div>
+        </details>
+        <details class="paa-item">
+          <summary>How is data validated at scale?</summary>
+          <div class="paa-body">A <b>Data Validator</b> (Streamlit UI + CLI + CI/CD) runs large-scale reconciliation
+            across <b>150+ of the 200 gold tables</b>, each holding <b>1M+ rows</b> — schema, row-count, row-hash,
+            statistical, duplicate, and custom-SQL checks, with automated Excel reconciliation reporting.</div>
+        </details>
+      </section>
+
+      <section id="experience">
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › experience</div>
+          <h3>Associate Consultant — Data Engineering, Hakkoda (an IBM Company)</h3>
+          <p>~2 years, deeply involved across the full lifecycle of a <b>multi-tenant healthcare data platform</b> —
+            ingestion, the Redshift-to-Snowflake migration, transformation and aggregation, distribution to serving,
+            application integration, and platform tooling. Independently owned several utilities end to end, wrote
+            production SQL and Python, built test cases, and supported validation and rollout across <b>~120 tenants</b>
+            and 5 environments. Since, expanded into Spark, PySpark, Databricks, Delta Lake, and Airflow.</p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › skills</div>
+          <h3>Toolset — production vs. currently expanding</h3>
+          <p>Filled chips are shipped in production. Outlined chips are being actively built up.</p>
+          <div class="chiprow">
+            <span class="chip on">SQL</span><span class="chip on">Snowflake</span><span
+              class="chip on">Redshift</span><span class="chip on">Python</span>
+            <span class="chip on">MySQL</span><span class="chip on">ETL/ELT</span><span class="chip on">Data
+              Migration</span><span class="chip on">Data Validation</span>
+            <span class="chip on">Amazon S3</span><span class="chip on">Spring Boot</span>
+          </div>
+          <div class="chiprow">
+            <span class="chip on">Java</span><span class="chip on">C++</span><span class="chip on">Docker</span><span
+              class="chip on">Git</span>
+            <span class="chip on">dbt</span><span class="chip on">Streamlit</span><span
+              class="chip on">CloudWatch</span><span class="chip on">CodePipeline</span>
+            <span class="chip on">DynamoDB</span><span class="chip on">Secrets Manager</span>
+          </div>
+          <div class="chiprow">
+            <span class="chip">Apache Spark</span><span class="chip">PySpark</span><span
+              class="chip">Databricks</span><span class="chip">Delta Lake</span>
+            <span class="chip">Airflow</span><span class="chip">Structured Streaming</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="result">
+          <div class="breadcrumb"><span class="fav"></span> vikassingh.dev › education</div>
+          <h3>B.Tech, Computer Science / AI — Swami Keshvanand Institute of Technology</h3>
+          <p>2021–2025 · CGPA 9.7. Certifications: <b>SnowPro Core Certified</b> (Snowflake), <b>Associate Developer for
+              Apache Spark — Python</b> (Databricks).</p>
+        </div>
+      </section>
+
+      <div class="pagination">
+        <span class="pnum active" data-target="#top">1</span>
+        <span class="pnum" data-target="#architecture">2</span>
+        <span class="pnum" data-target="#toolkit">3</span>
+        <span class="pnum" data-target="#experience">4</span>
+        <span class="pnum" data-target="#contact">5</span>
+        <span class="pnext" data-target="#contact">Next ›</span>
+      </div>
+    </div>
+
+    <aside class="kg-panel">
+      <div class="kg-avatar">VS</div>
+      <div class="kg-name">Vikas Singh</div>
+      <div class="kg-role">Data Engineer</div>
+      <div class="kg-bio">~2 years building and migrating multi-tenant healthcare data platforms.</div>
+      <div class="kg-facts">
+        <div class="kg-fact"><span class="fk">Experience</span><span class="fv">~2 years</span></div>
+        <div class="kg-fact"><span class="fk">Company</span><span class="fv">Hakkoda (IBM)</span></div>
+        <div class="kg-fact"><span class="fk">Certifications</span><span class="fv">2</span></div>
+        <div class="kg-fact"><span class="fk">Projects supported</span><span class="fv">2</span></div>
+        <div class="kg-fact"><span class="fk">Education</span><span class="fv">B.Tech CS/AI</span></div>
+        <div class="kg-fact"><span class="fk">Location</span><span class="fv">Jaipur, India</span></div>
+      </div>
+      <div class="kg-links">
+        <a class="kg-link" href="mailto:vikassingh15150109@gmail.com" title="Email">✉</a>
+        <a class="kg-link"
+          href="https://www.linkedin.com/in/vikas-singh-76b30722b?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+          target="_blank" rel="noopener" title="LinkedIn">in</a>
+        <a class="kg-link" href="https://github.com/VikasSingh7221/" target="_blank" rel="noopener"
+          title="GitHub">gh</a>
+        <a class="kg-link" href="#" title="Resume">CV</a>
+      </div>
+      <div class="kg-more">People also search for</div>
+      <div class="kg-related">
+        <span>Snowflake</span><span>SQL</span><span>Python</span><span>Data Platform Eng.</span><span>Spark</span>
+      </div>
+
+    </aside>
+  </main>
+
+  <footer class="gfooter" id="contact">
+    <div class="loc">Jaipur, Rajasthan, India</div>
+    <div class="links">
+      <div class="grp">
+        <a href="mailto:vikassingh15150109@gmail.com">vikassingh15150109@gmail.com</a>
+        <a href="tel:+917221970648">+91-7221970648</a>
+        <a href="https://www.linkedin.com/in/vikas-singh-76b30722b?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+          target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/VikasSingh7221/" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="grp">
+        <a href="#">Download Resume</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // logo letter coloring already via nth-child in CSS
+
+    // typing placeholder
+    const queries = ["search vikas singh", "site:vikassingh.dev architecture", "multi-tenant data platform engineer", "snowflake redshift migration", "data platform engineer resume"];
+    const input = document.getElementById('searchInput');
+    let qi = 0, ci = 0, deleting = false;
+    function typeLoop() {
+      const q = queries[qi];
+      if (!deleting) {
+        ci++;
+        input.placeholder = q.slice(0, ci);
+        if (ci === q.length) { deleting = true; setTimeout(typeLoop, 1400); return; }
+      } else {
+        ci--;
+        input.placeholder = q.slice(0, ci);
+        if (ci === 0) { deleting = false; qi = (qi + 1) % queries.length; }
+      }
+      setTimeout(typeLoop, deleting ? 30 : 55);
+    }
+    typeLoop();
+
+    // suggestions
+    const bar = document.getElementById('searchbar');
+    const suggest = document.getElementById('suggest');
+    input.addEventListener('focus', () => { bar.classList.add('focus'); suggest.classList.add('show'); });
+    document.addEventListener('click', (e) => {
+      if (!bar.contains(e.target)) { bar.classList.remove('focus'); suggest.classList.remove('show'); }
+    });
+    suggest.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelector(b.dataset.jump).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        suggest.classList.remove('show');
+      });
+    });
+
+    document.getElementById('searchPlatform').addEventListener('click', () => {
+      document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('feelingLucky').addEventListener('click', () => {
+      document.getElementById('experience').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // tabs + pagination scroll
+    document.querySelectorAll('[data-target]').forEach(el => {
+      el.addEventListener('click', () => {
+        const t = document.querySelector(el.dataset.target);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // scroll-spy for tabs
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const secIds = ['#top', '#architecture', '#toolkit', '#experience', '#skills', '#education', '#contact'];
+    const secs = secIds.map(id => document.querySelector(id)).filter(Boolean);
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const id = '#' + en.target.id;
+          tabs.forEach(t => t.classList.toggle('active', t.dataset.target === id));
+          document.querySelectorAll('.pnum').forEach(p => p.classList.toggle('active', p.dataset.target === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    secs.forEach(s => obs.observe(s));
+  </script>
+
 </body>
+
 </html>
